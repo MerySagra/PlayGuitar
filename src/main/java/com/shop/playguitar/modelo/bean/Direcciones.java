@@ -12,7 +12,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="direcciones")
-@NamedQuery(name="Direcciones.findAll", query="SELECT d FROM Direccione d")
+@NamedQuery(name="Direcciones.findAll", query="SELECT d FROM Direcciones d")
 public class Direcciones implements Serializable {
 	private static final long serialVersionUID = 1L;
 
