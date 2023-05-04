@@ -25,6 +25,7 @@ package com.shop.playguitar.controller;
             private UsuarioRepository usuarioRepository;
 
             //Precio de un producto solicitado
+
             @GetMapping("/producto/{id}/precio")
             public @ResponseBody
             BigDecimal damePrecioById(@PathVariable("id") double id) {
@@ -40,6 +41,8 @@ package com.shop.playguitar.controller;
             public List<Producto> obtenerTodosProductos(){
                 return productoRepository.findAll();
             }
+
+            //Productos por nombre
 
             @GetMapping("/porNombre/{nombre}")
             public List<Producto> obtenerProductoPorNombre(@PathVariable("nombre") String nombre){
