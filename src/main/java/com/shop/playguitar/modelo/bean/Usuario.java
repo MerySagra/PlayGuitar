@@ -38,12 +38,12 @@ public class Usuario implements Serializable {
 	
 	private int enabled;
 	
-	
+	/*
 	//uni-directional many-to-one association to Role
 	@ManyToOne
 	@JoinColumn(name="id_rol")
 	private Role role;
-	
+
 
 	public Role getRole() {
 		return role;
@@ -52,7 +52,8 @@ public class Usuario implements Serializable {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	
+
+
 
 
 	//uni-directional many-to-many association to Tarjeta
@@ -82,7 +83,7 @@ public class Usuario implements Serializable {
 		private List<Direcciones> direcciones;
 		
 
-
+		*/
 
 
 		public int getIdUsuario() {
@@ -153,7 +154,7 @@ public class Usuario implements Serializable {
 			this.enabled = enabled;
 		}
 		
-
+		/*
 
 		public List<Tarjeta> getTarjetas() {
 			return tarjetas;
@@ -199,7 +200,7 @@ public class Usuario implements Serializable {
 				direcciones = new ArrayList<>();
 			direcciones.remove(direccion);
 		}
-		
+		*/
 		@Override
 		public int hashCode() {
 			final int prime = 31;
@@ -227,8 +228,7 @@ public class Usuario implements Serializable {
 		public String toString() {
 			return "Usuario [idUsuario=" + idUsuario + ", apellidos=" + apellidos + ", email=" + email
 					+ ", fechaNacimiento=" + fechaNacimiento + ", nombre=" + nombre + ", password=" + password
-					+ ", enabled=" + enabled + ", role=" + role + ", tarjetas=" + tarjetas + ", direcciones="
-					+ direcciones + "]";
+					+ ", enabled=" + enabled + "]";
 		}
 		
 		

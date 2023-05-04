@@ -14,70 +14,23 @@ public class ProductoServiceImpl implements ProductoService {
 	
 	@Autowired
 	ProductoRepository prepo;
-	
-	@Override
-	public List<Producto> buscarTodos() {
-		// TODO Auto-generated method stub
-		return prepo.findAll();
-	}
-
-	/*
-	@Override
-	public boolean registro(Producto producto) {
-		if (findById(producto.getNombre()) == null) {
-				prepo.save(producto);
-				return true;
-		}
-		return false;
-	}
-	*/
-	/*
-	@Override
-	public Producto findById(String nombre) {
-		return prepo.findByNombre(nombre);
-	}
-	*/
-	/*
-	@Override
-	public Producto findByIdReal(int id) {
-		return prepo.findById(id);
-	}
-	*/
-	/*
-	@Override
-	public int bajaProducto(int id) {
-		int filas = 0;
-		if(findByIdReal(id) != null) {
-			try {
-			prepo.deleteById(id);
-			filas = 1;
-			}catch(Exception e) {
-				filas=0;
-			}
-		}
-		return filas;
-	}
-	*/
-
-
-	//Parte hecha por Javier
 
 	@Override
-	public List<Producto> verTodos() {
+	public List<Producto> findAll() {
 		
 		return prepo.findAll();
 	}
 
 
 	@Override
-	public List<Producto> verProductosPorNombre(String nombre) {
+	public List<Producto> findByName(String nombre) {
 		
 		return prepo.buscarPorNombre(nombre);
 	}
 
 	//Este es para ver el detalle del producto
 	@Override
-	public Producto verProducto(int idProducto) {
+	public Producto findById(int idProducto) {
 		
 		return prepo.findById(idProducto).orElse(null);
 	}

@@ -2,6 +2,8 @@ package com.shop.playguitar.controller;
 
     import java.math.BigDecimal;
     import java.util.List;
+
+    import com.shop.playguitar.modelo.service.ProductoService;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.web.bind.annotation.CrossOrigin;
     import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +21,7 @@ package com.shop.playguitar.controller;
     public class ProductoController {
 
             @Autowired
-            private ProductoRepository productoRepository;
+            private ProductoService productoService;
 
             @Autowired
             private UsuarioRepository usuarioRepository;
@@ -30,7 +32,7 @@ package com.shop.playguitar.controller;
             public @ResponseBody
             BigDecimal damePrecioById(@PathVariable("id") double id) {
                 //Producto producto = productoRepository.findById((int) id);
-                Producto producto = productoRepository.findById((int) id).orElse(null);
+                Producto producto = productoService.findById((int) id);
                 if (producto != null) {
                     return producto.getPrecio();        }
                 return null;    }
@@ -39,14 +41,21 @@ package com.shop.playguitar.controller;
 
             @GetMapping("/todos")
             public List<Producto> obtenerTodosProductos(){
-                return productoRepository.findAll();
+                return productoService.findAll();
             }
 
             //Productos por nombre
 
             @GetMapping("/porNombre/{nombre}")
             public List<Producto> obtenerProductoPorNombre(@PathVariable("nombre") String nombre){
-                return productoRepository.buscarPorNombre(nombre);
+                return productoService.findByName(nombre);
+            }
+
+            //Producto por id
+
+            @GetMapping("/porId/{id}")
+            public Producto obtenerProductoPorId(@PathVariable("id") int id){
+                return productoService.findById(id);
             }
 
         }

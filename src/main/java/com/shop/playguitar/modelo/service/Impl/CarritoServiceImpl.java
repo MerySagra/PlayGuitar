@@ -30,7 +30,7 @@ public class CarritoServiceImpl implements CarritoService {
 	//Añade el producto siempre que haya menos de 10 unidades de él
 	@Override
 	public void addProductoCarrito(Map<Producto, Integer> carrito, Integer idProducto) {
-		Producto producto = productoService.verProducto(idProducto);
+		Producto producto = productoService.findById(idProducto);
 
 		if (carrito.containsKey(producto)) {
 			int cantActual = carrito.get(producto);
@@ -49,7 +49,7 @@ public class CarritoServiceImpl implements CarritoService {
 	//Resta el producto, a través de su id, que elimines de la cesta
 	@Override
 	public void eliminateProductoCarrito(Map<Producto, Integer> carrito, Integer idProducto) {
-		Producto producto = productoService.verProducto(idProducto);
+		Producto producto = productoService.findById(idProducto);
 
 		if (carrito.containsKey(producto)) {
 			int cantActual = carrito.get(producto);

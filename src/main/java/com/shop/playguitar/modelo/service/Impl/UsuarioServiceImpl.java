@@ -31,13 +31,13 @@ public class UsuarioServiceImpl implements UsuarioService {
 	private RoleRepository rrepo;
 
 	@Override
-	public List<Usuario> verTodos() {
+	public List<Usuario> findAll() {
 	
 		return urepo.findAll();
 	}
 
 	@Override
-	public Usuario verUsuario(int idUsuario) {
+	public Usuario findById(int idUsuario) {
 		// TODO Auto-generated method stub
 		return urepo.findById(idUsuario).orElse(null);
 	}
@@ -70,13 +70,13 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public int modificarUsuario(Usuario usuario) {
 		int filas=0;
-		if(verUsuario(usuario.getIdUsuario()) != null) {
+		if(findById(usuario.getIdUsuario()) != null) {
 			urepo.save(usuario);
 			filas=1;
 		}
 		return filas;
 	}
-
+	/*
 	@Override
 	public List<Tarjeta> addTarjetaUsuario(Usuario usuario, Tarjeta tarjeta) {
 		List<Tarjeta> tarjetas = usuario.getTarjetas();
@@ -113,7 +113,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	    //session.update(usuario);
 	    return direcciones;
 	}
-
+	*/
 	
 	//método que modifica el rol del usuario (Solo si eres admin)
 	/*
