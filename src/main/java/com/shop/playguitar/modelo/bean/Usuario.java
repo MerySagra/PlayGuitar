@@ -53,9 +53,6 @@ public class Usuario implements Serializable {
 		this.role = role;
 	}
 
-
-
-
 	//uni-directional many-to-many association to Tarjeta
 	@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(
@@ -68,8 +65,10 @@ public class Usuario implements Serializable {
 				}
 			)
 	private List<Tarjeta> tarjetas;
-	
-	//uni-directional many-to-many association to Direccione
+
+	*/
+
+	//uni-directional many-to-many association to Direcciones
 		@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE})
 		@JoinTable(
 				name="usuarios_direcciones"
@@ -80,10 +79,10 @@ public class Usuario implements Serializable {
 						@JoinColumn(name="id_direccion")
 					}
 				)
-		private List<Direcciones> direcciones;
+		private List<Direcciones> direcciones = new ArrayList<>();
 		
 
-		*/
+
 
 
 		public int getIdUsuario() {
@@ -164,7 +163,7 @@ public class Usuario implements Serializable {
 			this.tarjetas = tarjetas;
 		}
 
-
+		*/
 
 		public List<Direcciones> getDirecciones() {
 			return direcciones;
@@ -176,7 +175,7 @@ public class Usuario implements Serializable {
 
 
 		
-		
+		/*
 		public void addTarjeta(Tarjeta tarjeta) {
 			if (tarjetas == null)
 				tarjetas = new ArrayList<>();
@@ -188,7 +187,8 @@ public class Usuario implements Serializable {
 				tarjetas = new ArrayList<>();
 			tarjetas.remove(tarjeta);
 		}
-		
+		*/
+
 		public void addDireccion(Direcciones direccion) {
 			if (direcciones == null)
 				direcciones = new ArrayList<>();
@@ -200,7 +200,7 @@ public class Usuario implements Serializable {
 				direcciones = new ArrayList<>();
 			direcciones.remove(direccion);
 		}
-		*/
+
 		@Override
 		public int hashCode() {
 			final int prime = 31;

@@ -38,8 +38,17 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public Usuario findById(int idUsuario) {
-		// TODO Auto-generated method stub
 		return urepo.findById(idUsuario).orElse(null);
+	}
+
+	@Override
+	public Usuario findByEmail(String email) {
+			return urepo.findByEmail(email);
+	}
+
+	@Override
+	public Usuario findByIdWithAddress(int idUsuario){
+		return urepo.findByIdWithAddress(idUsuario);
 	}
 
 	@Override

@@ -14,6 +14,8 @@ public interface UsuarioService {
 	List<Usuario> findAll();
 	
 	Usuario findById(int idUsuario);
+	Usuario findByEmail(String email);
+	Usuario findByIdWithAddress(int idUsuario);
 	
 	int altaUsuario(Usuario usuario);
 	int eliminarUsuario(int idUsuario);

@@ -62,5 +62,17 @@ public class UsuarioController {
             return usuarioRepository.save(usuarioExistente);
         }
 
-    }
+        //Usuario por email
+
+            @GetMapping("/findByEmail/{email}")
+            public Usuario verPorEmail(@PathVariable("email") String email){
+            return usuarioService.findByEmail(email);
+        }
+
+            @GetMapping("/users-addresses/{id}")
+            public Usuario verConDirecciones(@PathVariable("id") int id){
+            return usuarioService.findByIdWithAddress(id);
+            }
+
+        }
 

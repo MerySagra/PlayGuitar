@@ -14,6 +14,11 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 	List<Usuario> buscarPorCiudad(@Param("localidad") String localidad);
 
 	List<Usuario> findAll();
+
+	Usuario findByEmail(String email);
+
+	@Query("SELECT DISTINCT u FROM Usuario u JOIN FETCH u.direcciones WHERE u.id = :id")
+	Usuario findByIdWithAddress(int id);
 	
 	
 	
