@@ -10,7 +10,9 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.shop.playguitar.modelo.bean.PedidosProductos;
 import com.shop.playguitar.modelo.bean.Producto;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Integer>{
 	/*
 	List<Pedido> findAllByFecha(Date date);

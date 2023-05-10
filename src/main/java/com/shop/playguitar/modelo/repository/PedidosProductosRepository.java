@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.shop.playguitar.modelo.bean.PedidosProductos;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface PedidosProductosRepository extends JpaRepository<PedidosProductos, Integer>{
 	
 	@Query("SELECT sum(pp.precio_venta) FROM PedidosProductos pp WHERE pp.pedido.idPedido = ?1")

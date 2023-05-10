@@ -30,6 +30,8 @@ public class Producto implements Serializable {
 
 	private int stock;
 
+	private String url;
+
 	public Producto() {
 	}
 
@@ -73,27 +75,36 @@ public class Producto implements Serializable {
 		this.stock = stock;
 	}
 
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	@Override
 	public String toString() {
-		return "Producto [idProducto=" + idProducto + ", descripcion=" + descripcion + ", nombre=" + nombre
-				+ ", precio=" + precio + ", stock=" + stock + "]";
+		return "Producto{" +
+				"idProducto=" + idProducto +
+				", descripcion='" + descripcion + '\'' +
+				", nombre='" + nombre + '\'' +
+				", precio=" + precio +
+				", stock=" + stock +
+				", url='" + url + '\'' +
+				'}';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Producto)) return false;
+		Producto producto = (Producto) o;
+		return getIdProducto() == producto.getIdProducto() && getStock() == producto.getStock() && Objects.equals(getDescripcion(), producto.getDescripcion()) && Objects.equals(getNombre(), producto.getNombre()) && Objects.equals(getPrecio(), producto.getPrecio()) && Objects.equals(getUrl(), producto.getUrl());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(idProducto);
+		return Objects.hash(getIdProducto(), getDescripcion(), getNombre(), getPrecio(), getStock(), getUrl());
 	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!(obj instanceof Producto))
-			return false;
-		Producto other = (Producto) obj;
-		return idProducto == other.idProducto;
-	}
-	
-	
-
 }

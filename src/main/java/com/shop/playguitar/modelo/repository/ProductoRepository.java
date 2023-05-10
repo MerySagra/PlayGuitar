@@ -9,8 +9,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.shop.playguitar.modelo.bean.Producto;
+import org.springframework.stereotype.Repository;
 
-
+@Repository
 public interface ProductoRepository extends JpaRepository<Producto, Integer>{
 	
 	

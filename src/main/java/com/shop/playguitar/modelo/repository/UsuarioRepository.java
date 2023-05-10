@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.shop.playguitar.modelo.bean.Usuario;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 
 	@Query("SELECT u FROM Usuario u JOIN UsuarioDirecciones ud ON u.id = ud.usuario JOIN ud.direccion d WHERE d.localidad = :localidad")
