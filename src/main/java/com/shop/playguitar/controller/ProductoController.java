@@ -12,7 +12,6 @@ package com.shop.playguitar.controller;
     import org.springframework.web.bind.annotation.ResponseBody;
     import org.springframework.web.bind.annotation.RestController;
     import com.shop.playguitar.modelo.bean.Producto;
-    import com.shop.playguitar.modelo.repository.ProductoRepository;
     import com.shop.playguitar.modelo.repository.UsuarioRepository;
 
     @CrossOrigin(origins="*")
@@ -26,7 +25,11 @@ package com.shop.playguitar.controller;
             @Autowired
             private UsuarioRepository usuarioRepository;
 
-            //Precio de un producto solicitado
+        /**
+         *
+         * @param id
+         * @return Devuelte el precio de un producto a través de su id
+         */
 
             @GetMapping("/producto/{id}/precio")
             public @ResponseBody
@@ -37,21 +40,32 @@ package com.shop.playguitar.controller;
                     return producto.getPrecio();        }
                 return null;    }
 
-            //Listado de productos
+        /**
+         *
+         * @return Devuelve todos los productos
+         */
 
             @GetMapping("/todos")
             public List<Producto> obtenerTodosProductos(){
                 return productoService.findAll();
             }
 
-            //Productos por nombre
+        /**
+         *
+         * @param nombre
+         * @return Devuelve los productos por su nombre.
+         */
 
             @GetMapping("/porNombre/{nombre}")
             public List<Producto> obtenerProductoPorNombre(@PathVariable("nombre") String nombre){
                 return productoService.findByName(nombre);
             }
 
-            //Producto por id
+        /**
+         *
+         * @param id
+         * @return Devuelve un producto por su id
+         */
 
             @GetMapping("/porId/{id}")
             public Producto obtenerProductoPorId(@PathVariable("id") int id){

@@ -1,9 +1,6 @@
 package com.shop.playguitar.controller;
 
-import com.shop.playguitar.modelo.bean.Producto;
-import com.shop.playguitar.modelo.bean.Role;
 import com.shop.playguitar.modelo.bean.Usuario;
-import com.shop.playguitar.modelo.repository.ProductoRepository;
 import com.shop.playguitar.modelo.repository.UsuarioRepository;
 import com.shop.playguitar.modelo.service.RoleService;
 import com.shop.playguitar.modelo.service.UsuarioService;
@@ -11,8 +8,6 @@ import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 @CrossOrigin(origins="*")
@@ -29,28 +24,44 @@ public class UsuarioController {
         @Autowired
         private RoleService roleService;
 
-        //Listado de usuarios
+    /**
+     *
+     * @return Devuelve todos los usuarios existentes.
+     */
 
         @GetMapping("/todos")
         public List<Usuario> findAllUsers(){
             return usuarioService.findAll();
         }
 
-        //Añadir usuarios
+    /**
+     *
+     * @param user
+     * @return Da de alta un nuevo usuario
+     */
 
         @PostMapping("/alta")
         public Usuario addUser(@RequestBody Usuario user) {
             return usuarioRepository.save(user);
         }
 
-        //Usuario por id
+    /**
+     *
+     * @param id
+     * @return Encuentra al usuario del ID deseado.
+     */
 
         @GetMapping("/find/{id}")
         public Usuario verPorId(@PathVariable("id") int id){
             return usuarioService.findById(id);
         }
 
-        //Editar usuarios
+    /**
+     *
+     * @param id
+     * @param usuarioActualizado
+     * @return Edita la información de un usuario existente.
+     */
 
         @PutMapping("/editar/{id}")
         public Usuario editarUsuario(@PathVariable int id, @RequestBody Usuario usuarioActualizado){
@@ -58,21 +69,32 @@ public class UsuarioController {
 
             usuarioExistente.setNombre(usuarioActualizado.getNombre());
             usuarioExistente.setApellidos(usuarioActualizado.getApellidos());
+            usuarioExistente.setDirecciones(usuarioActualizado.getDirecciones());
 
             return usuarioRepository.save(usuarioExistente);
         }
 
-        //Usuario por email
+    /**
+     *
+     * @param email
+     * @return Encuentra al usuario a través de su mail.
+     */
 
-            @GetMapping("/findByEmail/{email}")
-            public Usuario verPorEmail(@PathVariable("email") String email){
-            return usuarioService.findByEmail(email);
+        @GetMapping("/findByEmail/{email}")
+        public Usuario verPorEmail(@PathVariable("email") String email){
+        return usuarioService.findByEmail(email);
         }
 
-            @GetMapping("/users-addresses/{id}")
-            public Usuario verConDirecciones(@PathVariable("id") int id){
-            return usuarioService.findByIdWithAddress(id);
-            }
+    /**
+     *
+     * @param id
+     * @return Encuentra al usuario del ID deseado con su dirección.
+     */
+
+        @GetMapping("/users-addresses/{id}")
+                public Usuario verConDirecciones(@PathVariable("id") int id){
+                return usuarioService.findByIdWithAddress(id);
+                }
 
         }
 

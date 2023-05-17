@@ -38,6 +38,8 @@ public class Direcciones implements Serializable {
 	public Direcciones() {
 	}
 
+	//Getters y Setters
+
 	public int getIdDireccion() {
 		return this.idDireccion;
 	}
@@ -94,11 +96,15 @@ public class Direcciones implements Serializable {
 		this.piso = piso;
 	}
 
+	//To String
+
 	@Override
 	public String toString() {
 		return "Direccione [idDireccion=" + idDireccion + ", calle=" + calle + ", codigoPostal=" + codigoPostal
 				+ ", letra=" + letra + ", localidad=" + localidad + ", numero=" + numero + ", piso=" + piso + "]";
 	}
+
+	//Equals & Hash code
 
 	@Override
 	public boolean equals(Object o) {

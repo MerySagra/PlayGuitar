@@ -3,7 +3,6 @@ package com.shop.playguitar.modelo.bean;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -51,19 +50,15 @@ public class Pedido implements Serializable {
 	public Pedido() {
 	}
 
-	
+	//Getters y Setters
 	
 	public String getEstado() {
 		return estado;
 	}
 
-
-
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-
-
 
 	public int getIdPedido() {
 		return this.idPedido;
@@ -96,7 +91,6 @@ public class Pedido implements Serializable {
 	public void setTarjeta(Tarjeta tarjeta) {
 		this.tarjeta = tarjeta;
 	}
-	
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -106,7 +100,6 @@ public class Pedido implements Serializable {
 		this.usuario = usuario;
 	}
 	
-	
 	public List<PedidosProductos> getPedidosproductos() {
 		return pedidosproductos;
 	}
@@ -114,8 +107,6 @@ public class Pedido implements Serializable {
 	public void setPedidosproductos(List<PedidosProductos> pedidosproductos) {
 		this.pedidosproductos = pedidosproductos;
 	}
-	
-	
 
 	public PedidosProductos addPedidosProductos(PedidosProductos pedidosproductos) {
 		getPedidosproductos().add(pedidosproductos);
