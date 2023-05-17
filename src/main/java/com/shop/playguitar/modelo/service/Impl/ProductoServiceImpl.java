@@ -15,73 +15,25 @@ public class ProductoServiceImpl implements ProductoService {
 	@Autowired
 	ProductoRepository prepo;
 
+	//Método que devuelve todos los productos
 	@Override
 	public List<Producto> findAll() {
 		
 		return prepo.findAll();
 	}
 
-
+	//Método que devuelve todos los productos por nombre
 	@Override
 	public List<Producto> findByName(String nombre) {
 		
 		return prepo.buscarPorNombre(nombre);
 	}
 
-	//Este es para ver el detalle del producto
+	//Método que devuelve un producto por su id
 	@Override
 	public Producto findById(int idProducto) {
 		
 		return prepo.findById(idProducto).orElse(null);
 	}
-	
-
-	@Override
-	public int altaProducto(Producto producto) {
-		int filas = 0;
-		try {
-			prepo.save(producto);
-			filas = 1;
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return filas;
-	}
-
-
-	@Override
-	public int eliminarProducto(int idProducto) {
-		int filas = 0;
-		try {
-			prepo.deleteById(idProducto);
-			filas=1;
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return filas;
-	}
-
-
-	@Override
-	public int modificarProducto(Producto producto) {
-		int filas=0;
-		
-			prepo.save(producto);
-		return filas;
-	}
-	/*
-	@Override
-	public int cambiaProducto(Producto producto) {
-		int cambia = 0;
-		if(findByIdReal(producto.getIdProducto()) != null) {
-			prepo.save(producto);
-			cambia = 1;
-		}
-		return cambia;
-	}
-	*/
-	
-
-
 
 }

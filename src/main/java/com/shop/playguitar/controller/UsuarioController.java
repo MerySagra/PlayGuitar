@@ -2,7 +2,6 @@ package com.shop.playguitar.controller;
 
 import com.shop.playguitar.modelo.bean.Usuario;
 import com.shop.playguitar.modelo.repository.UsuarioRepository;
-import com.shop.playguitar.modelo.service.RoleService;
 import com.shop.playguitar.modelo.service.UsuarioService;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +19,6 @@ public class UsuarioController {
 
         @Autowired
         private UsuarioRepository usuarioRepository;
-
-        @Autowired
-        private RoleService roleService;
 
     /**
      *

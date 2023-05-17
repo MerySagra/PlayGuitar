@@ -10,6 +10,7 @@ import java.util.Objects;
  * The persistent class for the productos database table.
  * 
  */
+
 @Entity
 @Table(name="productos")
 @NamedQuery(name="Producto.findAll", query="SELECT p FROM Producto p")
@@ -34,6 +35,8 @@ public class Producto implements Serializable {
 
 	public Producto() {
 	}
+
+	//Getters y Setters
 
 	public int getIdProducto() {
 		return this.idProducto;
@@ -83,6 +86,8 @@ public class Producto implements Serializable {
 		this.url = url;
 	}
 
+	//To String
+
 	@Override
 	public String toString() {
 		return "Producto{" +
@@ -94,6 +99,8 @@ public class Producto implements Serializable {
 				", url='" + url + '\'' +
 				'}';
 	}
+
+	//Equals & Hash code
 
 	@Override
 	public boolean equals(Object o) {
