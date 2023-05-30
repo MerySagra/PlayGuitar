@@ -12,6 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * The persistent class for the usuarios_direcciones database table.
+ *
+ */
+
 	@Entity
 	@Table(name = "USUARIOS_DIRECCIONES")
 	public class UsuarioDirecciones implements Serializable{
@@ -34,6 +39,8 @@ import javax.persistence.Table;
 	    public UsuarioDirecciones() {
 	    	
 	    }
+
+		//Getters y Setters
 
 		public Long getId() {
 			return id;
@@ -59,10 +66,14 @@ import javax.persistence.Table;
 			this.direccion = direccion;
 		}
 
+		//To String
+
 		@Override
 		public String toString() {
 			return "UsuarioDireccione [id=" + id + ", usuario=" + usuario + ", direccion=" + direccion + "]";
 		}
+
+		//Equals & Hash code
 
 		@Override
 		public boolean equals(Object o) {

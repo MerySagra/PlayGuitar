@@ -37,38 +37,8 @@ public class Usuario implements Serializable {
 	private String password;
 	
 	private int enabled;
-	
-	
-	//uni-directional many-to-one association to Role
-	@ManyToOne
-	@JoinColumn(name="id_rol")
-	private Role role;
-	
 
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
-	
-
-
-	//uni-directional many-to-many association to Tarjeta
-	@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinTable(
-			name="usuarios_tarjetas"
-			, joinColumns= {
-					@JoinColumn(name="id_usuario")	
-				}
-			, inverseJoinColumns = {
-					@JoinColumn(name="id_tarjeta")
-				}
-			)
-	private List<Tarjeta> tarjetas;
-	
-	//uni-directional many-to-many association to Direccione
+	//uni-directional many-to-many association to Direcciones
 		@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE})
 		@JoinTable(
 				name="usuarios_direcciones"
@@ -79,11 +49,9 @@ public class Usuario implements Serializable {
 						@JoinColumn(name="id_direccion")
 					}
 				)
-		private List<Direcciones> direcciones;
+		private List<Direcciones> direcciones = new ArrayList<>();
 		
-
-
-
+		//Getters y Setters
 
 		public int getIdUsuario() {
 			return idUsuario;
@@ -93,8 +61,6 @@ public class Usuario implements Serializable {
 			this.idUsuario = idUsuario;
 		}
 
-
-
 		public String getApellidos() {
 			return apellidos;
 		}
@@ -102,8 +68,6 @@ public class Usuario implements Serializable {
 		public void setApellidos(String apellidos) {
 			this.apellidos = apellidos;
 		}
-
-
 
 		public String getEmail() {
 			return email;
@@ -113,8 +77,6 @@ public class Usuario implements Serializable {
 			this.email = email;
 		}
 
-
-
 		public Date getFechaNacimiento() {
 			return fechaNacimiento;
 		}
@@ -122,8 +84,6 @@ public class Usuario implements Serializable {
 		public void setFechaNacimiento(Date fechaNacimiento) {
 			this.fechaNacimiento = fechaNacimiento;
 		}
-
-
 
 		public String getNombre() {
 			return nombre;
@@ -133,8 +93,6 @@ public class Usuario implements Serializable {
 			this.nombre = nombre;
 		}
 
-
-
 		public String getPassword() {
 			return password;
 		}
@@ -143,8 +101,6 @@ public class Usuario implements Serializable {
 			this.password = password;
 		}
 
-
-
 		public int getEnabled() {
 			return enabled;
 		}
@@ -152,18 +108,6 @@ public class Usuario implements Serializable {
 		public void setEnabled(int enabled) {
 			this.enabled = enabled;
 		}
-		
-
-
-		public List<Tarjeta> getTarjetas() {
-			return tarjetas;
-		}
-
-		public void setTarjetas(List<Tarjeta> tarjetas) {
-			this.tarjetas = tarjetas;
-		}
-
-
 
 		public List<Direcciones> getDirecciones() {
 			return direcciones;
@@ -173,21 +117,6 @@ public class Usuario implements Serializable {
 			this.direcciones = direcciones;
 		}
 
-
-		
-		
-		public void addTarjeta(Tarjeta tarjeta) {
-			if (tarjetas == null)
-				tarjetas = new ArrayList<>();
-			tarjetas.add(tarjeta);
-		}
-		
-		public void removeTarjeta(Tarjeta tarjeta) {
-			if (tarjetas == null)
-				tarjetas = new ArrayList<>();
-			tarjetas.remove(tarjeta);
-		}
-		
 		public void addDireccion(Direcciones direccion) {
 			if (direcciones == null)
 				direcciones = new ArrayList<>();
@@ -199,7 +128,9 @@ public class Usuario implements Serializable {
 				direcciones = new ArrayList<>();
 			direcciones.remove(direccion);
 		}
-		
+
+		//Equals & Hash code
+
 		@Override
 		public int hashCode() {
 			final int prime = 31;
@@ -223,20 +154,13 @@ public class Usuario implements Serializable {
 			return true;
 		}
 
+		//To String
+
 		@Override
 		public String toString() {
 			return "Usuario [idUsuario=" + idUsuario + ", apellidos=" + apellidos + ", email=" + email
 					+ ", fechaNacimiento=" + fechaNacimiento + ", nombre=" + nombre + ", password=" + password
-					+ ", enabled=" + enabled + ", role=" + role + ", tarjetas=" + tarjetas + ", direcciones="
-					+ direcciones + "]";
+					+ ", enabled=" + enabled + "]";
 		}
-		
-		
-		
-		
-	
-	
-	
-	
 
-}
+	}

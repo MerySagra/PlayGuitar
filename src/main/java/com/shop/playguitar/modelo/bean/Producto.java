@@ -10,6 +10,7 @@ import java.util.Objects;
  * The persistent class for the productos database table.
  * 
  */
+
 @Entity
 @Table(name="productos")
 @NamedQuery(name="Producto.findAll", query="SELECT p FROM Producto p")
@@ -30,8 +31,12 @@ public class Producto implements Serializable {
 
 	private int stock;
 
+	private String url;
+
 	public Producto() {
 	}
+
+	//Getters y Setters
 
 	public int getIdProducto() {
 		return this.idProducto;
@@ -73,27 +78,40 @@ public class Producto implements Serializable {
 		this.stock = stock;
 	}
 
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	//To String
+
 	@Override
 	public String toString() {
-		return "Producto [idProducto=" + idProducto + ", descripcion=" + descripcion + ", nombre=" + nombre
-				+ ", precio=" + precio + ", stock=" + stock + "]";
+		return "Producto{" +
+				"idProducto=" + idProducto +
+				", descripcion='" + descripcion + '\'' +
+				", nombre='" + nombre + '\'' +
+				", precio=" + precio +
+				", stock=" + stock +
+				", url='" + url + '\'' +
+				'}';
+	}
+
+	//Equals & Hash code
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Producto)) return false;
+		Producto producto = (Producto) o;
+		return getIdProducto() == producto.getIdProducto() && getStock() == producto.getStock() && Objects.equals(getDescripcion(), producto.getDescripcion()) && Objects.equals(getNombre(), producto.getNombre()) && Objects.equals(getPrecio(), producto.getPrecio()) && Objects.equals(getUrl(), producto.getUrl());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(idProducto);
+		return Objects.hash(getIdProducto(), getDescripcion(), getNombre(), getPrecio(), getStock(), getUrl());
 	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!(obj instanceof Producto))
-			return false;
-		Producto other = (Producto) obj;
-		return idProducto == other.idProducto;
-	}
-	
-	
-
 }

@@ -6,27 +6,12 @@ import com.shop.playguitar.modelo.bean.Producto;
 
 
 public interface ProductoService {
-	
-	List<Producto> buscarTodos();
-	//boolean registro(Producto producto);
-	//public Producto findById(String nombre);
-	//int bajaProducto(int id);
-	//public Producto findByIdReal(int id);
-	//int cambiaProducto(Producto producto);
-	
-	// Parte hecha por Javier
-	
-	List<Producto> verTodos();
-	List<Producto> verProductosPorNombre(String nombre);
-	Producto verProducto(int idProducto); //este es para ver DETALLE del producto
-	
-	int altaProducto(Producto producto);
-	int eliminarProducto(int idProducto);
-	int modificarProducto(Producto producto);
-	
 
-	
-
-	
+	//Método que devuelve todos los productos
+	List<Producto> findAll();
+	//Método que devuelve todos los productos por nombre
+	List<Producto> findByName(String nombre);
+	//Método que devuelve un producto por su id
+	Producto findById(int idProducto);
 
 }
